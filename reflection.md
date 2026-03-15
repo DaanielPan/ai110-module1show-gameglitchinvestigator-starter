@@ -49,6 +49,7 @@ Claude Code helped design all the new tests in this file. It generated tests tha
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 - What change did you make that finally gave the game a stable secret number?
 
+The secret kept changing because Streamlit reruns the whole script on every button click, so `random.randint()` fired again each time and picked a new number. Streamlit reruns are like a full page reload — every interaction re-executes everything from top to bottom. `st.session_state` is a small memory that survives those reruns, so values stored in it don't get reset. The fix was wrapping the secret in `if "secret" not in st.session_state:` so it only gets generated once on first load.
 
 ---
 
@@ -58,3 +59,5 @@ Claude Code helped design all the new tests in this file. It generated tests tha
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+Writing tests that check both the outcome and the message — not just whether a function returns the right category, but whether the actual content is correct — is a habit I want to keep. Next time I'd verify AI suggestions against the actual file structure before accepting them, since Claude placed a FIXME in the wrong file after a refactor. This project made me realize AI-generated code can look correct at a glance but still have subtle logic bugs that only show up when you trace through the values manually.

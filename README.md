@@ -25,13 +25,25 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [x] Describe the game's purpose.
+
+  A number guessing game where the player tries to guess a secret number within a limited number of attempts. The game gives hints after each guess and tracks a score.
+
+- [x] Detail which bugs you found.
+
+  1. **Swapped hint messages** — when a guess was too high, the game said "Go HIGHER!" instead of "Go LOWER!", sending players in the wrong direction.
+  2. **Attempts off by one** — `attempts` initialized to `1` instead of `0`, making the sidebar show one more attempt than was actually available.
+  3. **New game didn't reset status** — after winning or losing, clicking "New Game" left `status` as `"won"`/`"lost"`, so the game was permanently blocked by `st.stop()`.
+
+- [x] Explain what fixes you applied.
+
+  1. Swapped the return messages in `check_guess` in `logic_utils.py` so "Go LOWER!" matches a too-high guess and "Go HIGHER!" matches a too-low guess.
+  2. Changed the initial value of `st.session_state.attempts` from `1` to `0` in `app.py`.
+  3. Added `st.session_state.status = "playing"` to the new game reset block in `app.py` so the game unblocks correctly on restart.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+![Winning game screenshot](image/Screenshot%202026-03-15%20at%201.24.04%20AM.png)
 
 ## 🚀 Stretch Features
 
