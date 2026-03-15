@@ -43,7 +43,7 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📸 Demo
 
-![Winning game screenshot](image/Screenshot%202026-03-15%20at%201.24.04%20AM.png)
+![Winning game screenshot](image/win.png)
 
 ## 🚀 Stretch Features
 
